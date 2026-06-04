@@ -1,0 +1,146 @@
+{
+  "drinks": [
+    {
+      "name": "Coca Cola",
+      "price": "£1.00",
+      "desc": "Chilled soft drink",
+      "img": "images/coca-cola.jpg",
+      "alt": "Coca Cola",
+      "class": "coke-card"
+    },
+    {
+      "name": "Redbull",
+      "price": "£2.30",
+      "desc": "It gives you wings inih",
+      "img": "images/redbull.jpg",
+      "alt": "Redbull",
+      "class": "redbull-card"
+    },
+    {
+      "name": "(1.5L) Coca Cola Bottle",
+      "price": "£3.00",
+      "desc": "Large bottle of Coca Cola for sharing or takeaway",
+      "img": "images/coca-cola-1.5l.jpg",
+      "alt": "Coca Cola 1.5L Bottle",
+      "class": "cocacola-bottle-card"
+    },
+    {
+      "name": "Pepsi",
+      "price": "£1.00",
+      "desc": "Chilled soft drink",
+      "img": "images/pepsi.jpg",
+      "alt": "Pepsi",
+      "class": "pepsi-card"
+    },
+    {
+      "name": "Fanta",
+      "price": "£1.00",
+      "desc": "Chilled orange soft drink",
+      "img": "images/fanta.jpg",
+      "alt": "Fanta",
+      "class": "fanta-card"
+    },
+    {
+      "name": "Diet Coke",
+      "price": "£1.00",
+      "desc": "Zero sugar chilled soft drink",
+      "img": "images/diet-coke.jpg",
+      "alt": "Diet Coke",
+      "class": "dietcoke-card"
+    },
+    {
+      "name": "Rio",
+      "price": "£1.00",
+      "desc": "Fruity tropical soft drink",
+      "img": "images/rio.jpg",
+      "alt": "Rio",
+      "class": "rio-card"
+    },
+    {
+      "name": "Guava",
+      "price": "£1.00",
+      "desc": "Fruity guava-flavoured drink",
+      "img": "images/guava.jpg",
+      "alt": "Guava Drink",
+      "class": "guava-card"
+    },
+    {
+      "name": "Irn Bru",
+      "price": "£1.00",
+      "desc": "Classic Scottish fizzy drink",
+      "img": "images/irn-bru.jpg",
+      "alt": "Irn Bru",
+      "class": "irnbru-card"
+    },
+    {
+      "name": "Vimto",
+      "price": "£1.00",
+      "desc": "Fruity berry-flavoured soft drink",
+      "img": "images/vimto.jpg",
+      "alt": "Vimto",
+      "class": "vimto-card"
+    },
+    {
+      "name": "7 Up",
+      "price": "£1.00",
+      "desc": "Lemon-lime sparkling soft drink",
+      "img": "images/7up.jpg",
+      "alt": "7 Up",
+      "class": "sevenup-card"
+    },
+    {
+      "name": "Mirinda Strawberry",
+      "price": "£1.00",
+      "desc": "Strawberry flavoured fizzy drink",
+      "img": "images/mirinda-strawberry.jpg",
+      "alt": "Mirinda Strawberry",
+      "class": "mirinda-card"
+    }
+  ],
+
+  "desserts": [
+    {
+      "name": "Matilda Mini Eggs Crunch Cake",
+      "price": "£6.50",
+      "desc": "Cake topped with mini eggs and crunchy pieces.",
+      "img": "images/minieggcrunchcake.jpg",
+      "alt": "Matilda Mini Eggs Crunch Cake",
+      "class": "minieggscrunchcake-card"
+    }
+  ],
+
+  "sweets": [
+    {
+      "name": "Asian Sweet Selection Box (half kg)",
+      "price": "£6.50",
+      "desc": "Half kg box of assorted Asian sweets with a mix of flavours and textures.",
+      "img": "images/asiansweethalfkg.jpg",
+      "alt": "Asian Sweet Selection Box (half kg)",
+      "class": "asiansweethalfkg-card"
+    },
+    {
+      "name": "Asian Sweet Selection Box (1 kg)",
+      "price": "£12.00",
+      "desc": "Mixed assortment of Asian sweets, 1 kg box with a variety of pieces and flavours.",
+      "img": "images/asiansweet1kg.jpg",
+      "alt": "Asian Sweet Selection Box (1 kg)",
+      "class": "asiansweet1kg-card"
+    },
+    {
+      "name": "Gulab Jamun Container (6 pieces)",
+      "price": "£6.00",
+      "desc": "6 soft gulab jamun soaked in sugar syrup, packed in a handy container.",
+      "img": "images/gulabjamin6.jpg",
+      "alt": "Gulab Jamun Container (6 pieces)",
+      "class": "gulabjamin6-card"
+    },
+    {
+      "name": "Rasmalai Container (6 pieces)",
+      "price": "£6.00",
+      "desc": "6 soft cheese dumplings in sweetened milk, packed in a handy container..",
+      "img": "images/rasmalai6.jpg",
+      "alt": "Rasmalai Container (6 pieces)",
+      "class": "rasmalai6-card"
+    }
+  ]
+}
