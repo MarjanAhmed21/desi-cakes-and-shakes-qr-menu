@@ -244,3 +244,173 @@ html {
   }
 
 }
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+
+
+/* MODAL BACKDROP */
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  align-items: flex-end;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.3s ease;
+
+  z-index: 9999;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* SHEET */
+
+.modal-content {
+  background: white;
+
+  width: 100%;
+
+  border-radius: 25px 25px 0 0;
+
+  padding: 20px;
+
+  transform: translateY(100%);
+
+  transition: transform 0.35s ease;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+}
+
+.modal.active .modal-content {
+  transform: translateY(0);
+}
+
+/* CLOSE BUTTON */
+
+#close-modal {
+  border: none;
+  background: none;
+
+  font-size: 32px;
+
+  cursor: pointer;
+
+  float: right;
+}
+
+/* IMAGE */
+
+#modal-img {
+  width: 100%;
+  height: 260px;
+
+  object-fit: cover;
+
+  border-radius: 15px;
+
+  margin-top: 10px;
+}
+
+/* INFO */
+
+.modal-info h2 {
+  margin-top: 15px;
+  color: #3d2b25;
+}
+
+.modal-info p {
+  margin-top: 10px;
+  color: #777;
+}
+
+#modal-price {
+  display: block;
+
+  margin-top: 15px;
+
+  font-size: 22px;
+
+  color: #e4087f;
+
+  font-weight: 700;
+}
+
+/* SIZE BUTTONS */
+
+#modal-sizes {
+  display: flex;
+  gap: 10px;
+
+  margin-top: 15px;
+}
+
+.size-btn {
+  padding: 10px 15px;
+
+  border-radius: 8px;
+
+  border: 2px solid #e4087f;
+
+  background: white;
+
+  cursor: pointer;
+
+  font-weight: 600;
+}
+
+.size-btn.active {
+  background: #e4087f;
+  color: white;
+}

@@ -1,0 +1,390 @@
+[
+  {
+    "id": "coca-cola",
+    "name": "Coca Cola",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/coca-cola.jpg",
+    "description": "Chilled soft drink",
+    "alt": "Coca Cola"
+  },
+  {
+    "id": "redbull",
+    "name": "Redbull",
+    "category": "drinks",
+    "price": 2.3,
+    "image": "images/redbull.jpg",
+    "description": "It gives you wings inih",
+    "alt": "Redbull"
+  },
+  {
+    "id": "coca-cola-1-5l",
+    "name": "Coca Cola 1.5L Bottle",
+    "category": "drinks",
+    "price": 3,
+    "image": "images/coca-cola-1.5l.jpg",
+    "description": "Large bottle of Coca Cola for sharing or takeaway",
+    "alt": "Coca Cola 1.5L Bottle"
+  },
+  {
+    "id": "pepsi",
+    "name": "Pepsi",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/pepsi.jpg",
+    "description": "Chilled soft drink",
+    "alt": "Pepsi"
+  },
+  {
+    "id": "fanta",
+    "name": "Fanta",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/fanta.jpg",
+    "description": "Chilled orange soft drink",
+    "alt": "Fanta"
+  },
+  {
+    "id": "diet-coke",
+    "name": "Diet Coke",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/diet-coke.jpg",
+    "description": "Zero sugar chilled soft drink",
+    "alt": "Diet Coke"
+  },
+  {
+    "id": "rio",
+    "name": "Rio",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/rio.jpg",
+    "description": "Fruity tropical soft drink",
+    "alt": "Rio"
+  },
+  {
+    "id": "guava",
+    "name": "Guava",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/guava.jpg",
+    "description": "Fruity guava-flavoured drink",
+    "alt": "Guava"
+  },
+  {
+    "id": "irn-bru",
+    "name": "Irn Bru",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/irn-bru.jpg",
+    "description": "Classic Scottish fizzy drink",
+    "alt": "Irn Bru"
+  },
+  {
+    "id": "vimto",
+    "name": "Vimto",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/vimto.jpg",
+    "description": "Fruity berry-flavoured soft drink",
+    "alt": "Vimto"
+  },
+  {
+    "id": "7up",
+    "name": "7 Up",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/7up.jpg",
+    "description": "Lemon-lime sparkling soft drink",
+    "alt": "7 Up"
+  },
+  {
+    "id": "mirinda-strawberry",
+    "name": "Mirinda Strawberry",
+    "category": "drinks",
+    "price": 1,
+    "image": "images/mirinda-strawberry.jpg",
+    "description": "Strawberry flavoured fizzy drink",
+    "alt": "Mirinda Strawberry"
+  },
+
+  {
+    "id": "matilda-mini-eggs-cake",
+    "name": "Matilda Mini Eggs Crunch Cake",
+    "category": "desserts",
+    "price": 6.5,
+    "image": "images/minieggcrunchcake.jpg",
+    "description": "Cake topped with mini eggs and crunchy pieces.",
+    "alt": "Matilda Mini Eggs Crunch Cake"
+  },
+  {
+    "id": "milk-cake",
+    "name": "Milk Cake",
+    "category": "desserts",
+    "price": 7,
+    "image": "images/milkcake.jpg",
+    "description": "Classic milk-based cake with a dense, creamy texture.",
+    "alt": "Milk Cake"
+  },
+  {
+    "id": "mini-eggs-pot",
+    "name": "Matilda Mini Eggs Crunch Pot",
+    "category": "desserts",
+    "price": 5.5,
+    "image": "images/minieggcrunchpot.jpg",
+    "description": "Dessert pot topped with crushed mini eggs for a crunchy bite.",
+    "alt": "Mini Eggs Crunch Pot"
+  },
+  {
+    "id": "malteser-cake",
+    "name": "Malteser Crunch Cake",
+    "category": "desserts",
+    "price": 6.5,
+    "image": "images/malteasercrunchcake.jpg",
+    "description": "Cake with crushed Maltesers for a malty crunch.",
+    "alt": "Malteser Crunch Cake"
+  },
+  {
+    "id": "jammy-dodger-cake",
+    "name": "Jammy Dodger Crunch Cake",
+    "category": "desserts",
+    "price": 6.5,
+    "image": "images/jammydodgercrunchcake.jpg",
+    "description": "Cake layered with jam and biscuit crumb, topped with Jammie Dodger pieces.",
+    "alt": "Jammy Dodger Crunch Cake"
+  },
+  {
+    "id": "white-kinder-bueno-cake",
+    "name": "White Kinder Bueno Crunch Cake",
+    "category": "desserts",
+    "price": 6.5,
+    "image": "images/whitekindercrunchcake.jpg",
+    "description": "Cake topped with White Kinder Bueno and crunchy pieces.",
+    "alt": "White Kinder Bueno Crunch Cake"
+  },
+
+  {
+    "id": "asian-sweets-500g",
+    "name": "Asian Sweet Selection Box (500g)",
+    "category": "sweets",
+    "price": 6.5,
+    "image": "images/asiansweethalfkg.jpg",
+    "description": "Half kg box of assorted Asian sweets with a mix of flavours and textures.",
+    "alt": "Asian Sweets 500g"
+  },
+  {
+    "id": "asian-sweets-1kg",
+    "name": "Asian Sweet Selection Box (1kg)",
+    "category": "sweets",
+    "price": 12,
+    "image": "images/asiansweet1kg.jpg",
+    "description": "Mixed assortment of Asian sweets, 1 kg box with a variety of pieces and flavours.",
+    "alt": "Asian Sweets 1kg"
+  },
+  {
+    "id": "gulab-jamun-6",
+    "name": "Gulab Jamun (6 pieces)",
+    "category": "sweets",
+    "price": 6,
+    "image": "images/gulabjamin6.jpg",
+    "description": "6 soft gulab jamun soaked in sugar syrup.",
+    "alt": "Gulab Jamun"
+  },
+  {
+    "id": "rasmalai-6",
+    "name": "Rasmalai (6 pieces)",
+    "category": "sweets",
+    "price": 6,
+    "image": "images/rasmalai6.jpg",
+    "description": "6 soft cheese dumplings in sweetened milk.",
+    "alt": "Rasmalai"
+  },
+
+  {
+    "id": "white-choc-strawberry-matcha",
+    "name": "White Chocolate & Strawberry Matcha",
+    "category": "matchas",
+    "price": 6.5,
+    "image": "images/whitechocstrawberrymatcha.jpg",
+    "description": "Iced matcha with white chocolate and strawberry flavour.",
+    "alt": "White Chocolate Strawberry Matcha"
+  },
+  {
+    "id": "french-vanilla-matcha",
+    "name": "French Vanilla Matcha",
+    "category": "matchas",
+    "price": 6.5,
+    "image": "images/frenchvanillamatcha.jpg",
+    "description": "Iced matcha with French vanilla flavour.",
+    "alt": "French Vanilla Matcha"
+  },
+  {
+    "id": "blueberry-matcha",
+    "name": "Blueberry Matcha",
+    "category": "matchas",
+    "price": 6.5,
+    "image": "images/blueberrymatcha.jpg",
+    "description": "Iced matcha green tea with blueberry flavour.",
+    "alt": "Blueberry Matcha"
+  },
+
+  {
+    "id": "kunafa-cup",
+    "name": "Kunafa Cup",
+    "category": "mains",
+    "price": 8,
+    "image": "images/kufana.jpg",
+    "description": "Strawberry filled cup with kunafa pistachio topping and chocolate sauces.",
+    "alt": "Kunafa Cup"
+  },
+  {
+    "id": "waffles",
+    "name": "Waffles",
+    "category": "mains",
+    "price": 6.5,
+    "image": "images/waffles.jpg",
+    "description": "Classic waffle with a crisp outside and soft centre.",
+    "alt": "Waffles"
+  },
+  {
+    "id": "brownie-pots",
+    "name": "Brownie Pots",
+    "category": "mains",
+    "price": 5,
+    "image": "images/brownies-pots.jpg",
+    "description": "Individual pots filled with chocolate brownie.",
+    "alt": "Brownie Pots"
+  },
+  {
+    "id": "cupcakes",
+    "name": "Cupcakes",
+    "category": "mains",
+    "price": 5,
+    "image": "images/range.jpg",
+    "description": "Soft fluffy cupcakes with rich frosting.",
+    "alt": "Cupcakes"
+  },
+
+  {
+    "id": "matilda-cake",
+    "name": "Matilda Cake",
+    "category": "cakes",
+    "price": 6.5,
+    "image": "images/matilda-cake.jpg",
+    "description": "Chocolate fudge cake smothered with ganache.",
+    "alt": "Matilda Cake"
+  },
+  {
+    "id": "celebration-cake",
+    "name": "Celebration Cake (9 inch)",
+    "category": "cakes",
+    "price": 30,
+    "image": "images/celebrate-cake.jpg",
+    "description": "Vanilla cake with strawberry jam. Customisable for occasions.",
+    "alt": "Celebration Cake"
+  },
+
+  {
+    "id": "oreo-milkshake",
+    "name": "Oreo Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "largePrice": 7,
+    "image": "images/oreo-milkshake.jpg",
+    "description": "Milkshake blended with crushed Oreo biscuits.",
+    "alt": "Oreo Milkshake"
+  },
+  {
+    "id": "biscoff-milkshake",
+    "name": "Biscoff Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "largePrice": 7,
+    "image": "images/biscoff-milkshake.jpg",
+    "description": "Caramelised milkshake blended with Biscoff biscuits.",
+    "alt": "Biscoff Milkshake"
+  },
+  {
+    "id": "ferrero-milkshake",
+    "name": "Ferrero Rocher Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "largePrice": 7,
+    "image": "images/ferrero-rocher-milkshake.jpg",
+    "description": "Milkshake blended with Ferrero Rocher chocolates.",
+    "alt": "Ferrero Rocher Milkshake"
+  },
+  {
+    "id": "kinder-milkshake",
+    "name": "Kinder Bueno Chocolate Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "largePrice": 7,
+    "image": "images/kinder-bueno-milkshake.jpg",
+    "description": "Creamy chocolate milkshake with Kinder Bueno.",
+    "alt": "Kinder Bueno Milkshake"
+  },
+  {
+    "id": "vanilla-milkshake",
+    "name": "Vanilla Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "image": "images/vanilla-milkshake.jpg",
+    "description": "Classic vanilla milkshake.",
+    "alt": "Vanilla Milkshake"
+  },
+  {
+    "id": "chocolate-brownie-milkshake",
+    "name": "Chocolate Brownie Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "image": "images/chocolate-brownie-milkshake.jpg",
+    "description": "Chocolate milkshake with brownie pieces.",
+    "alt": "Chocolate Brownie Milkshake"
+  },
+  {
+    "id": "cookies-cream-milkshake",
+    "name": "Cookies and Cream Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "image": "images/cookies-and-cream-milkshake.jpg",
+    "description": "Milkshake blended with cookie pieces.",
+    "alt": "Cookies and Cream Milkshake"
+  },
+  {
+    "id": "strawberry-cheesecake-milkshake",
+    "name": "Strawberry Cheesecake Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "image": "images/strawberry-cheesecake-milkshake.jpg",
+    "description": "Creamy strawberry cheesecake flavoured milkshake.",
+    "alt": "Strawberry Cheesecake Milkshake"
+  },
+  {
+    "id": "mint-choc-chip-milkshake",
+    "name": "Mint Chocolate Chip Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "image": "images/mint-chocolate-chip-milkshake.jpg",
+    "description": "Mint milkshake with chocolate chips.",
+    "alt": "Mint Chocolate Chip Milkshake"
+  },
+  {
+    "id": "bubblegum-milkshake",
+    "name": "Bubblegum Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "image": "images/bubblegum-milkshake.jpg",
+    "description": "Bubblegum flavour milkshake.",
+    "alt": "Bubblegum Milkshake"
+  },
+  {
+    "id": "millions-milkshake",
+    "name": "Millions Milkshake",
+    "category": "milkshakes",
+    "price": 6,
+    "image": "images/millions-milkshake.jpg",
+    "description": "Milkshake blended with Millions sweets.",
+    "alt": "Millions Milkshake"
+  }
+]

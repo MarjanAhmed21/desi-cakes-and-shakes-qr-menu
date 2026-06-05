@@ -1,6 +1,12 @@
+let menuData = {};
+
+// ========================
+// CATEGORY SCROLL SYSTEM
+// ========================
+
 const links = document.querySelectorAll(".category-scroll a");
 const sections = document.querySelectorAll(".menu-section");
-const OFFSET = 70; 
+const OFFSET = 70;
 
 function setActive(id) {
   links.forEach(link => {
@@ -11,26 +17,23 @@ function setActive(id) {
   });
 }
 
-
 let clickLocked = false;
 let unlockTimeout;
 
-// CLICK
+// CLICK SCROLL
 links.forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
 
     clickLocked = true;
-
     clearTimeout(unlockTimeout);
+
     unlockTimeout = setTimeout(() => {
       clickLocked = false;
-    }, 1200); // unlock after scroll finishes
+    }, 1200);
 
     const id = link.getAttribute("href").replace("#", "");
     const section = document.getElementById(id);
-
-    const OFFSET = 70;
 
     const y =
       section.getBoundingClientRect().top +
@@ -42,21 +45,19 @@ links.forEach(link => {
       behavior: "smooth"
     });
 
-    setActive(id); // immediately lock correct highlight
+    setActive(id);
   });
 });
 
-// SCROLL (ONLY ONE SYSTEM — IntersectionObserver)
+// SCROLL OBSERVER
 const observer = new IntersectionObserver((entries) => {
-  if (clickLocked) return; // 🚨 STOP OVERRIDING CLICK SELECTION
+  if (clickLocked) return;
 
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-
     setActive(entry.target.id);
   });
 }, {
-  root: null,
   threshold: 0.4,
   rootMargin: "-80px 0px -50% 0px"
 });
@@ -64,34 +65,135 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach(section => observer.observe(section));
 
 
+// ========================
+// RENDER SYSTEM (FIXED)
+// ========================
 
-function renderMenu(category, gridId, data) {
+function renderMenu(category, gridId) {
   const grid = document.getElementById(gridId);
+  if (!grid) return;
 
-  data[category].forEach(item => {
+  const items = menuData[category];
+
+  if (!items) return;
+
+  items.forEach(product => {
     const card = document.createElement("div");
-    card.className = `item-card ${item.class}`;
+    card.className = "item-card";
 
     card.innerHTML = `
-      <img src="${item.img}" alt="${item.alt}">
+      <img src="${product.img}" alt="${product.alt}">
       <div class="item-info">
-        <h3>${item.name}</h3>
-        <p>${item.desc}</p>
-        <span>${item.price}</span>
+        <h3>${product.name}</h3>
+        <p>${product.desc}</p>
+        <span>${product.price}</span>
       </div>
     `;
+
+    // CLICK POPUP HOOK (for next step)
+    card.addEventListener("click", () => {
+      openModal(product);
+    });
 
     grid.appendChild(card);
   });
 }
 
+
+// ========================
+// LOAD MENU.JSON
+// ========================
+
 fetch("menu.json")
   .then(res => res.json())
   .then(data => {
+    menuData = data;
 
-    renderMenu("drinks", "drinks-grid", data);
-    renderMenu("desserts", "desserts-grid", data);
-    renderMenu("sweets", "sweets-grid", data);
+    renderMenu("mains", "mains-grid");
+    renderMenu("cakes", "cakes-grid");
+    renderMenu("milkshakes", "shakes-grid");
 
+    renderMenu("drinks", "drinks-grid");
+    renderMenu("desserts", "desserts-grid");
+    renderMenu("sweets", "sweets-grid");
+    renderMenu("matchas", "matchas-grid");
   });
 
+
+// ========================
+// MODAL 
+// ========================
+
+const modal = document.getElementById("product-modal");
+
+const modalImg = document.getElementById("modal-img");
+const modalTitle = document.getElementById("modal-title");
+const modalDesc = document.getElementById("modal-desc");
+const modalPrice = document.getElementById("modal-price");
+
+const modalSizes = document.getElementById("modal-sizes");
+
+const closeModalBtn = document.getElementById("close-modal");
+
+function openModal(product) {
+
+    console.log("CLICKED", product);
+
+  modalImg.src = product.img;
+  modalTitle.textContent = product.name;
+  modalDesc.textContent = product.desc;
+  modalPrice.textContent = product.price;
+
+  modalSizes.innerHTML = "";
+
+  // MILKSHAKE SIZE OPTIONS
+  if (
+    product.name.toLowerCase().includes("milkshake")
+  ) {
+
+    const regular = document.createElement("button");
+    regular.className = "size-btn active";
+    regular.textContent = "Regular";
+
+    const large = document.createElement("button");
+    large.className = "size-btn";
+    large.textContent = "Large (+£1)";
+
+    regular.addEventListener("click", () => {
+
+      regular.classList.add("active");
+      large.classList.remove("active");
+
+      modalPrice.textContent = product.price;
+    });
+
+    large.addEventListener("click", () => {
+
+      large.classList.add("active");
+      regular.classList.remove("active");
+
+      const currentPrice =
+        parseFloat(product.price.replace("£", ""));
+
+      modalPrice.textContent =
+        "£" + (currentPrice + 1).toFixed(2);
+    });
+
+    modalSizes.appendChild(regular);
+    modalSizes.appendChild(large);
+  }
+
+  modal.classList.add("active");
+}
+
+closeModalBtn.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+modal.addEventListener("click", (e) => {
+
+  if (e.target === modal) {
+    modal.classList.remove("active");
+  }
+
+});
