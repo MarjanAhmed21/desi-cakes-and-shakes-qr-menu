@@ -198,65 +198,28 @@ html {
 }
 
 
-/* DESKTOP VIEW */
-@media (min-width: 800px) {
-
-  .menu-section {
-    justify-self: center;
-  }
-
-  .menu-section h2{
-    text-align: center;
-  }
-
-  .menu-section .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  width: 100%;
-}
-
-
-  .menu-container,
-.menu-section {
-  width: 98%;
-  justify-self: center;
-}
-
-
-
-  .item-card {
-    flex-direction: column;
-    width: 100%;
-    box-sizing: border-box;
-    height: 100%;
-  }
-
-  .item-card img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-  }
-
-
-  .category-scroll{
-    justify-content: center;
-  }
-
-}
 
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* MOBILE bottom sheet */
+
   justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.3s ease;
   z-index: 9999;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal.hidden {
@@ -265,11 +228,21 @@ html {
 
 .modal-content {
   background: white;
-  width: 90%;
-  max-width: 400px;
-  border-radius: 12px;
-  padding: 15px;
-  text-align: center;
+
+  width: 100%;   /* FULL WIDTH FIX */
+  max-width: 95%;
+
+  max-height: 92vh;
+  height: 81%;
+
+  border-radius: 25px 25px 0 0;
+
+  padding: 20px;
+
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+
+  overflow-y: auto;
 }
 
 .modal-content img {
@@ -289,49 +262,13 @@ html {
 
 
 
-/* MODAL BACKDROP */
 
-.modal {
-  position: fixed;
-  inset: 0;
-
-  background: rgba(0,0,0,0.5);
-
-  display: flex;
-  align-items: flex-end;
-
-  opacity: 0;
-  visibility: hidden;
-
-  transition: 0.3s ease;
-
-  z-index: 9999;
-}
 
 .modal.active {
   opacity: 1;
   visibility: visible;
 }
 
-/* SHEET */
-
-.modal-content {
-  background: white;
-
-  width: 100%;
-
-  border-radius: 25px 25px 0 0;
-
-  padding: 20px;
-
-  transform: translateY(100%);
-
-  transition: transform 0.35s ease;
-
-  max-height: 90vh;
-
-  overflow-y: auto;
-}
 
 .modal.active .modal-content {
   transform: translateY(0);
@@ -354,7 +291,7 @@ html {
 
 #modal-img {
   width: 100%;
-  height: 260px;
+  height: 600px;
 
   object-fit: cover;
 
@@ -413,4 +350,82 @@ html {
 .size-btn.active {
   background: #e4087f;
   color: white;
+}
+
+
+
+/* DESKTOP VIEW */
+@media (min-width: 800px) {
+
+  .menu-section {
+    justify-self: center;
+  }
+
+  .menu-section h2{
+    text-align: center;
+  }
+
+  .menu-section .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+
+  .menu-container,
+.menu-section {
+  width: 98%;
+  justify-self: center;
+}
+
+
+
+  .item-card {
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  .item-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+  }
+
+
+  .category-scroll{
+    justify-content: center;
+  }
+
+  .modal {
+    align-items: center;
+  }
+
+  .modal-content {
+    width: 450px;
+    max-width: 90vw;
+
+    height: auto;
+    max-height: 85vh;
+
+    border-radius: 18px;
+
+    transform: scale(0.9);
+    opacity: 0;
+
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  #modal-img{
+  width: 100%;
+  height: 300px;
+  }
+
 }
