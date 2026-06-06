@@ -137,7 +137,6 @@ const closeModalBtn = document.getElementById("close-modal");
 
 function openModal(product) {
 
-    console.log("CLICKED", product);
 
   modalImg.src = product.img;
   modalTitle.textContent = product.name;
@@ -196,4 +195,22 @@ modal.addEventListener("click", (e) => {
     modal.classList.remove("active");
   }
 
+});
+
+
+
+
+
+const imageViewer = document.getElementById("image-viewer");
+const viewerImg = document.getElementById("viewer-img");
+
+// Open full image
+modalImg.addEventListener("click", () => {
+  viewerImg.src = modalImg.src;
+  imageViewer.classList.add("active");
+});
+
+// Close when clicked
+imageViewer.addEventListener("click", () => {
+  imageViewer.classList.remove("active");
 });
