@@ -6,7 +6,7 @@ let menuData = {};
 
 const links = document.querySelectorAll(".category-scroll a");
 const sections = document.querySelectorAll(".menu-section");
-const OFFSET = 70;
+const OFFSET = 125;
 
 function setActive(id) {
   links.forEach(link => {
