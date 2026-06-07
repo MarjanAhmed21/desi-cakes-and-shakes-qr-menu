@@ -138,6 +138,8 @@ const closeModalBtn = document.getElementById("close-modal");
 function openModal(product) {
 
 
+    
+
   modalImg.src = product.img;
   modalTitle.textContent = product.name;
   modalDesc.textContent = product.desc;
@@ -183,6 +185,17 @@ function openModal(product) {
   }
 
   modal.classList.add("active");
+
+  const whatsappBtn = document.getElementById("modal-whatsapp");
+
+const phoneNumber = "447882265112"; // <-- replace with desi cake's number (no + sign)
+
+const message = `Hi! I want to order:
+- Item: ${product.name}
+- Price: ${product.price}`;
+
+whatsappBtn.href =
+  `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 }
 
 closeModalBtn.addEventListener("click", () => {
@@ -214,3 +227,56 @@ modalImg.addEventListener("click", () => {
 imageViewer.addEventListener("click", () => {
   imageViewer.classList.remove("active");
 });
+
+
+
+const searchInput = document.getElementById("search-input");
+
+searchInput.addEventListener("focus", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+searchInput.addEventListener("input", () => {
+
+  const searchTerm = searchInput.value.toLowerCase();
+
+  document.querySelectorAll(".menu-section").forEach(section => {
+
+    const cards = section.querySelectorAll(".item-card");
+    let visibleCards = 0;
+
+    cards.forEach(card => {
+
+      const title = card.querySelector("h3").textContent.toLowerCase();
+      const desc = card.querySelector("p").textContent.toLowerCase();
+
+      if (
+        title.includes(searchTerm) ||
+        desc.includes(searchTerm)
+      ) {
+        card.style.display = "flex";
+        visibleCards++;
+      } else {
+        card.style.display = "none";
+      }
+
+    });
+
+    // Hide empty categories
+    if (visibleCards === 0) {
+      section.style.display = "none";
+    } else {
+      section.style.display = "block";
+    }
+    
+
+  });
+
+  
+
+});
+
+
