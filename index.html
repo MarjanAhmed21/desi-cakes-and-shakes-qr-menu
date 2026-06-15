@@ -22,18 +22,29 @@
   <h1>Our Menu</h1>
   <p>Browse, Order, Enjoy!</p>
 
+  
+
 </header>
 
-  <!-- CATEGORY SCROLLER -->
-  <div class="category-scroll">
-    <a href="#mains">Mains</a>
-    <a href="#cakes">Cakes</a>
-    <a href="#milkshakes">Milkshakes</a>
-    <a href="#drinks">Drinks</a>
-    <a href="#desserts">Desserts</a>
-    <a href="#sweets">Asian Sweets</a>
-    <a href="#matchas">Iced Matchas</a>
-  </div>
+  <div class="category-bar">
+
+    <div class="category-scroll">
+        <a href="#mains">Mains</a>
+        <a href="#cakes">Cakes</a>
+        <a href="#shakes">Milkshakes</a>
+        <a href="#drinks">Drinks</a>
+        <a href="#desserts">Desserts</a>
+        <a href="#sweets">Sweets</a>
+        <a href="#matchas">Matcha</a>
+        
+    </div>
+
+    <div class="cart-button" id="cart-nav">
+        🛒
+        <span id="cart-count">0</span>
+    </div>
+
+</div>
 
 
   <div class="search-bar">
@@ -106,7 +117,7 @@
 
   <div class="modal-content">
 
-    <button id="close-modal">&times;</button>
+    <button id="modal-close">&times;</button>
 
     <img id="modal-img" src="" alt="">
 
@@ -120,15 +131,77 @@
 
       <span id="modal-price"></span>
 
-      <a id="modal-whatsapp" class="whatsapp-btn" target="_blank">
-  Order on WhatsApp
-</a>
+      <div class="quantity-selector">
+    <button id="minus-btn">−</button>
+
+    <input
+        type="number"
+        id="quantity"
+        value="1"
+        min="1"
+        max="50"
+    >
+
+    <button id="plus-btn">+</button>
+</div>
+
+<button id="add-cart-btn">
+    Add to Basket
+</button>
+</div>
 
     </div>
 
   </div>
 
 </div>
+
+
+<div class="cart-overlay" id="cart-overlay"></div>
+
+<div class="cart-drawer" id="cart-drawer">
+
+  <div class="cart-header">
+    <h2>Your Basket</h2>
+    <span id="cart-close">×</span>
+  </div>
+
+  <!-- SCROLL AREA -->
+  <div class="cart-body">
+
+    <div id="cart-items"></div>
+
+    <div class="checkout-form">
+
+      <input id="cust-name" type="text" placeholder="Your Name *">
+
+      <input id="cust-phone" type="tel" placeholder="Phone Number *">
+
+      <select id="order-type">
+        <option value="collection">Collection</option>
+        <option value="delivery">Delivery</option>
+      </select>
+
+      <div id="address-container">
+        <input id="cust-address" type="text" placeholder="Delivery Address *">
+      </div>
+
+      <input id="cust-time" type="text" placeholder="Preferred Time (Optional)">
+    </div>
+
+  </div>
+
+  <!-- FIXED FOOTER -->
+  <div class="cart-footer">
+    <h3>Total: £<span id="cart-total">0.00</span></h3>
+    <button id="checkout-btn">Checkout on WhatsApp</button>
+  </div>
+
+</div>
+
+
+
+
 
 
 <div id="image-viewer" class="image-viewer">

@@ -120,6 +120,9 @@ fetch("menu.json")
   });
 
 
+
+
+
 // ========================
 // MODAL 
 // ========================
@@ -133,7 +136,21 @@ const modalPrice = document.getElementById("modal-price");
 
 const modalSizes = document.getElementById("modal-sizes");
 
-const closeModalBtn = document.getElementById("close-modal");
+
+
+const closeBtn = document.getElementById("modal-close");
+const qtyInput = document.getElementById("quantity");
+const plusBtn = document.getElementById("plus-btn");
+const minusBtn = document.getElementById("minus-btn");
+const addCartBtn = document.getElementById("add-cart-btn");
+const cartItems = document.getElementById("cart-items");
+const cartTotal = document.getElementById("cart-total");
+
+if (!cartItems || !cartTotal) {
+  console.warn("Cart UI missing from HTML");
+}
+
+let selectedItem = null;
 
 function openModal(product) {
 
@@ -146,6 +163,9 @@ function openModal(product) {
   modalPrice.textContent = product.price;
 
   modalSizes.innerHTML = "";
+
+
+  selectedItem = product;
 
   // MILKSHAKE SIZE OPTIONS
   if (
@@ -186,21 +206,132 @@ function openModal(product) {
 
   modal.classList.add("active");
 
-  const whatsappBtn = document.getElementById("modal-whatsapp");
+  qtyInput.value = 1;
 
-const phoneNumber = "447882265112"; // <-- replace with desi cake's number (no + sign)
-
-const message = `Hi! I want to order:
-- Item: ${product.name}
-- Price: ${product.price}`;
-
-whatsappBtn.href =
-  `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 }
 
-closeModalBtn.addEventListener("click", () => {
+
+function saveBasket() {
+    localStorage.setItem("basket", JSON.stringify(basket));
+}
+
+plusBtn.onclick = () => {
+
+    if(Number(qtyInput.value) < 50){
+
+        qtyInput.value++;
+
+    }
+
+};
+
+minusBtn.onclick = () => {
+
+    if(Number(qtyInput.value) > 1){
+
+        qtyInput.value--;
+
+    }
+
+};
+
+
+
+let basket = JSON.parse(localStorage.getItem("basket")) || [];
+
+addCartBtn.onclick = () => {
+
+    const existing = basket.find(
+    item => item.name === selectedItem.name
+);
+
+if (existing) {
+
+    existing.quantity += Number(qtyInput.value);
+
+} else {
+
+    basket.push({
+
+        ...selectedItem,
+
+        quantity: Number(qtyInput.value)
+
+    });
+
+}
+    
+    saveBasket();
+    syncCartUI();
+    renderCart();
+
+    modal.classList.remove("active");
+
+    openCart();
+
+    console.log(basket);
+
+};
+
+
+closeBtn.onclick = () => {
   modal.classList.remove("active");
-});
+};
+
+window.onclick = (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("active");
+  }
+};
+
+
+function updateCartUI() {
+    const count = basket.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById("cart-count").textContent = count;
+}
+
+syncCartUI();
+
+
+
+function syncCartUI() {
+    const totalQty = basket.reduce((sum, item) => sum + item.quantity, 0);
+
+    document.getElementById("cart-count").textContent = totalQty;
+
+    const checkoutBtn = document.getElementById("checkout-btn");
+
+    checkoutBtn.disabled = totalQty === 0;
+    checkoutBtn.style.opacity = totalQty === 0 ? "0.5" : "1";
+    checkoutBtn.style.pointerEvents = totalQty === 0 ? "none" : "auto";
+}
+
+
+
+
+
+function changeQty(index, amount) {
+  basket[index].quantity += amount;
+
+  if (basket[index].quantity <= 0) {
+    basket.splice(index, 1);
+  }
+
+  localStorage.setItem("basket", JSON.stringify(basket));
+
+  updateCartUI();
+  renderCart();
+}
+
+function removeItem(index) {
+  basket.splice(index, 1);
+
+  localStorage.setItem("basket", JSON.stringify(basket));
+
+  updateCartUI();
+  renderCart();
+}
+
 
 modal.addEventListener("click", (e) => {
 
@@ -280,3 +411,144 @@ searchInput.addEventListener("input", () => {
 });
 
 
+function updateCartUI() {
+  const count = basket.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("cart-count").textContent = count;
+  localStorage.setItem("basket", JSON.stringify(basket));
+}
+
+function renderCart() {
+
+  cartItems.innerHTML = "";
+
+  if (basket.length === 0) {
+
+    cartItems.innerHTML =
+        "<p>Your basket is empty.</p>";
+
+    cartTotal.textContent = "0.00";
+
+    return;
+
+}
+
+  let total = 0;
+
+  basket.forEach((item, index) => {
+
+    const price = parseFloat(item.price.replace("£", ""));
+    total += price * item.quantity;
+
+    const div = document.createElement("div");
+    div.className = "cart-item";
+
+    div.innerHTML = `
+<div>
+
+<strong>${item.name}</strong><br>
+
+£${price.toFixed(2)}
+
+<div class="cart-qty">
+<button onclick="changeQty(${index}, -1)">−</button>
+
+<span>${item.quantity}</span>
+
+<button onclick="changeQty(${index}, 1)">+</button>
+</div>
+
+<textarea
+class="item-note"
+placeholder="Add a note (optional)..."
+oninput="updateNote(${index}, this.value)"
+>${item.note || ""}</textarea>
+
+</div>
+
+<button onclick="removeItem(${index})">🗑️</button>
+`;
+
+    cartItems.appendChild(div);
+  });
+
+  cartTotal.textContent = total.toFixed(2);
+
+
+
+}
+
+
+
+function changeQty(index, amount) {
+  basket[index].quantity += amount;
+
+  if (basket[index].quantity <= 0) {
+    basket.splice(index, 1);
+  }
+
+  updateCartUI();
+  renderCart();
+}
+
+function removeItem(index) {
+  basket.splice(index, 1);
+  updateCartUI();
+  renderCart();
+}
+
+function updateNote(index, value) {
+  basket[index].note = value;
+  localStorage.setItem("basket", JSON.stringify(basket));
+}
+
+
+const cartIcon = document.getElementById("cart-nav");
+const cartDrawer = document.getElementById("cart-drawer");
+const cartOverlay = document.getElementById("cart-overlay");
+const cartClose = document.getElementById("cart-close");
+
+cartIcon.onclick = openCart;
+cartClose.onclick = closeCart;
+cartOverlay.onclick = closeCart;
+
+function openCart() {
+  cartDrawer.classList.add("active");
+  cartOverlay.classList.add("active");
+  renderCart();
+}
+
+function closeCart() {
+  cartDrawer.classList.remove("active");
+  cartOverlay.classList.remove("active");
+}
+
+document.getElementById("checkout-btn").onclick = () => {
+
+  let message = "Order:\n\n";
+  let total = 0;
+
+  basket.forEach(item => {
+
+    const price = parseFloat(item.price.replace("£", ""));
+    const subtotal = price * item.quantity;
+
+    total += subtotal;
+
+    message += `${item.name} x${item.quantity} - £${subtotal.toFixed(2)}\n`;
+
+    if (item.note) {
+      message += `Note: ${item.note}\n`;
+    }
+
+    message += "\n";
+  });
+
+  message += `Total: £${total.toFixed(2)}\n`;
+
+  const phone = "447882265112";
+
+  window.open(
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
+    "_blank"
+  );
+};
