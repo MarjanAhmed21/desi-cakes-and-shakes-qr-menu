@@ -291,7 +291,7 @@
       "name": "Asian Sweet Selection Box (half kg)",
       "price": "£6.50",
       "desc": "Half kg box of assorted Asian sweets with a mix of flavours and textures.",
-      "img": "images/asiansweethalfkg.jpg",
+      "img": "images/asiansweets.jpg",
       "alt": "Asian Sweet Selection Box (half kg)",
       "class": "asiansweethalfkg-card"
     },
@@ -299,7 +299,7 @@
       "name": "Asian Sweet Selection Box (1 kg)",
       "price": "£12.00",
       "desc": "Mixed assortment of Asian sweets, 1 kg box with a variety of pieces and flavours.",
-      "img": "images/asiansweet1kg.jpg",
+      "img": "images/asiansweets.jpg",
       "alt": "Asian Sweet Selection Box (1 kg)",
       "class": "asiansweet1kg-card"
     },
@@ -307,7 +307,7 @@
       "name": "Gulab Jamun Container (6 pieces)",
       "price": "£6.00",
       "desc": "6 soft gulab jamun soaked in sugar syrup, packed in a handy container.",
-      "img": "images/gulabjamin6.jpg",
+      "img": "images/gulabjamun.jpg",
       "alt": "Gulab Jamun Container (6 pieces)",
       "class": "gulabjamin6-card"
     },
@@ -315,7 +315,7 @@
       "name": "Rasmalai Container (6 pieces)",
       "price": "£6.00",
       "desc": "6 soft cheese dumplings in sweetened milk, packed in a handy container.",
-      "img": "images/rasmalai6.jpg",
+      "img": "images/rasmalai.jpg",
       "alt": "Rasmalai Container (6 pieces)",
       "class": "rasmalai6-card"
     }
@@ -323,35 +323,75 @@
   "matchas": [
     {
       "name": "White Chocolate Matcha",
-      "price": "£6.50",
+      "price": "£5.00",
       "desc": "Iced matcha green tea with white chocolate.",
-      "img": "images/whitechocmatcha.jpg",
+      "img": "images/matcha.jpg",
       "alt": "White Chocolate Matcha",
       "class": "whitechocmatcha-card"
     },
     {
-      "name": "White Chocolate & Strawberry Matcha",
-      "price": "£6.50",
-      "desc": "Iced matcha with white chocolate and strawberry flavous.",
-      "img": "images/whitechocstrawberrymatcha.jpg",
-      "alt": "White Chocolate & Strawberry Matcha",
-      "class": "whitechocstrawberrymatcha-card"
+      "name": "White Chocolate & Rasberry Matcha",
+      "price": "£5.00",
+      "desc": "Iced matcha with white chocolate and raspberry flavous.",
+      "img": "images/matcha.jpg",
+      "alt": "White Chocolate & Raspberry Matcha",
+      "class": "whitechocraspberrymatcha-card"
     },
     {
-      "name": "French Vanilla Matcha",
-      "price": "£6.50",
-      "desc": "Iced matcha with French vanilla flavour.",
-      "img": "images/frenchvanillamatcha.jpg",
-      "alt": "French Vanilla Matcha",
-      "class": "frenchvanillamatcha-card"
+      "name": "Raspberry Matcha",
+      "price": "£5.00",
+      "desc": "Iced matcha with raspberry flavour.",
+      "img": "images/matcha.jpg",
+      "alt": " Raspberry Matcha",
+      "class": "raspberrymatcha-card"
+    },
+    {
+      "name": "Strawberry Matcha",
+      "price": "£5.00",
+      "desc": "Iced matcha green tea with strawberry flavour.",
+      "img": "images/matcha.jpg",
+      "alt": "Strawberry Matcha",
+      "class": "strawberrymatcha-card"
     },
     {
       "name": "Blueberry Matcha",
-      "price": "£6.50",
+      "price": "£5.00",
       "desc": "Iced matcha green tea with blueberry flavour.",
-      "img": "images/blueberrymatcha.jpg",
+      "img": "images/matcha.jpg",
       "alt": "Blueberry Matcha",
       "class": "blueberrymatcha-card"
+    },
+    {
+      "name": "Caramel Matcha",
+      "price": "£5.00",
+      "desc": "Iced matcha green tea with caramel.",
+      "img": "images/matcha.jpg",
+      "alt": "Caramel Matcha",
+      "class": "caramelmatcha-card"
+    },
+    {
+      "name": "Banana Matcha",
+      "price": "£5.00",
+      "desc": "Iced matcha with banana.",
+      "img": "images/matcha.jpg",
+      "alt": "Banana Matcha",
+      "class": "bananamatcha-card"
+    },
+    {
+      "name": "Hazelnut Matcha",
+      "price": "£5.00",
+      "desc": "Iced matcha with hazelnut flavour.",
+      "img": "images/matcha.jpg",
+      "alt": " Hazelnut Matcha",
+      "class": "hazelnutmatcha-card"
+    },
+    {
+      "name": "Cherry Matcha",
+      "price": "£5.00",
+      "desc": "Iced matcha green tea with cherry flavour.",
+      "img": "images/matcha.jpg",
+      "alt": "Cherry Matcha",
+      "class": "cherrymatcha-card"
     }
   ]
 }

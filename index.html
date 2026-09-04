@@ -31,18 +31,14 @@
     <div class="category-scroll">
         <a href="#mains">Mains</a>
         <a href="#cakes">Cakes</a>
-        <a href="#shakes">Milkshakes</a>
+        <a href="#milkshakes">Milkshakes</a>
         <a href="#drinks">Drinks</a>
         <a href="#desserts">Desserts</a>
         <a href="#sweets">Sweets</a>
         <a href="#matchas">Matcha</a>
         
     </div>
-
-    <div class="cart-button" id="cart-nav">
-        🛒
-        <span id="cart-count">0</span>
-    </div>
+    
 
 </div>
 
@@ -117,9 +113,9 @@
 
   <div class="modal-content">
 
-    <button id="modal-close">&times;</button>
+    <span class="close" id="modal-close">&times;</span>
 
-    <img id="modal-img" src="" alt="">
+    <img id="modal-img" src="" alt=""/>
 
     <div class="modal-info">
 
@@ -131,24 +127,7 @@
 
       <span id="modal-price"></span>
 
-      <div class="quantity-selector">
-    <button id="minus-btn">−</button>
-
-    <input
-        type="number"
-        id="quantity"
-        value="1"
-        min="1"
-        max="50"
-    >
-
-    <button id="plus-btn">+</button>
-</div>
-
-<button id="add-cart-btn">
-    Add to Basket
-</button>
-</div>
+  </div>
 
     </div>
 
@@ -156,48 +135,6 @@
 
 </div>
 
-
-<div class="cart-overlay" id="cart-overlay"></div>
-
-<div class="cart-drawer" id="cart-drawer">
-
-  <div class="cart-header">
-    <h2>Your Basket</h2>
-    <span id="cart-close">×</span>
-  </div>
-
-  <!-- SCROLL AREA -->
-  <div class="cart-body">
-
-    <div id="cart-items"></div>
-
-    <div class="checkout-form">
-
-      <input id="cust-name" type="text" placeholder="Your Name *">
-
-      <input id="cust-phone" type="tel" placeholder="Phone Number *">
-
-      <select id="order-type">
-        <option value="collection">Collection</option>
-        <option value="delivery">Delivery</option>
-      </select>
-
-      <div id="address-container">
-        <input id="cust-address" type="text" placeholder="Delivery Address *">
-      </div>
-
-      <input id="cust-time" type="text" placeholder="Preferred Time (Optional)">
-    </div>
-
-  </div>
-
-  <!-- FIXED FOOTER -->
-  <div class="cart-footer">
-    <h3>Total: £<span id="cart-total">0.00</span></h3>
-    <button id="checkout-btn">Checkout on WhatsApp</button>
-  </div>
-
-</div>
 
 
 
@@ -220,7 +157,7 @@
 
     <div class="footer-brand">
 
-      <img src="images/Header-logo.png" alt="Desi Cakes & Shakes Logo">
+      <img src="images/Header-logo.png" alt="Logo">
 
       <h2>Desi Cakes & Shakes</h2>
 
@@ -229,6 +166,8 @@
       </p>
 
     </div>
+
+    
 
     <!-- CONTACT -->
 
@@ -250,7 +189,7 @@
 
       <h3>Opening Hours</h3>
 
-      <p>Monday - Sunday</p>
+      <p>Mon - Sun</p>
       <p>11:00am - 10:00pm</p>
 
     </div>
@@ -261,21 +200,17 @@
 
       <h3>Follow Us</h3>
 
-      <a href="https://www.tiktok.com/@desicakesmcr?is_from_webapp=1&sender_device=pc"
-     target="_blank">Tiktok</a>
-      
-     <a href="https://www.instagram.com/desicakesmcr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-     target="_blank">Instagram</a>
+      <a href="https://www.instagram.com/desicakesmcr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@desicakesmcr?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
+      <a href="https://www.facebook.com/muddasar.iqbal786/" target="_blank">Facebook</a>
+
+
 
     </div>
 
   </div>
 
   <div class="footer-bottom">
-
-    <p class="allergy-note">
-      Please inform our staff of any allergies or dietary requirements before ordering.
-    </p>
 
     <p>
       © 2026 Desi Cakes & Shakes. All Rights Reserved.
@@ -286,6 +221,7 @@
     </p>
 
   </div>
+  
 
 </footer>
 

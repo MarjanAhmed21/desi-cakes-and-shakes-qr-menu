@@ -139,18 +139,7 @@ const modalSizes = document.getElementById("modal-sizes");
 
 
 const closeBtn = document.getElementById("modal-close");
-const qtyInput = document.getElementById("quantity");
-const plusBtn = document.getElementById("plus-btn");
-const minusBtn = document.getElementById("minus-btn");
-const addCartBtn = document.getElementById("add-cart-btn");
-const cartItems = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
 
-if (!cartItems || !cartTotal) {
-  console.warn("Cart UI missing from HTML");
-}
-
-let selectedItem = null;
 
 function openModal(product) {
 
@@ -163,9 +152,6 @@ function openModal(product) {
   modalPrice.textContent = product.price;
 
   modalSizes.innerHTML = "";
-
-
-  selectedItem = product;
 
   // MILKSHAKE SIZE OPTIONS
   if (
@@ -206,72 +192,9 @@ function openModal(product) {
 
   modal.classList.add("active");
 
-  qtyInput.value = 1;
-
 }
 
 
-function saveBasket() {
-    localStorage.setItem("basket", JSON.stringify(basket));
-}
-
-plusBtn.onclick = () => {
-
-    if(Number(qtyInput.value) < 50){
-
-        qtyInput.value++;
-
-    }
-
-};
-
-minusBtn.onclick = () => {
-
-    if(Number(qtyInput.value) > 1){
-
-        qtyInput.value--;
-
-    }
-
-};
-
-
-
-let basket = JSON.parse(localStorage.getItem("basket")) || [];
-
-addCartBtn.onclick = () => {
-
-    const existing = basket.find(
-    item => item.name === selectedItem.name
-);
-
-if (existing) {
-
-    existing.quantity += Number(qtyInput.value);
-
-} else {
-
-    basket.push({
-
-        ...selectedItem,
-
-        quantity: Number(qtyInput.value)
-
-    });
-
-}
-    
-    saveBasket();
-    syncCartUI();
-    renderCart();
-
-    modal.classList.remove("active");
-
-    openCart();
-
-    console.log(basket);
-
-};
 
 
 closeBtn.onclick = () => {
@@ -283,54 +206,6 @@ window.onclick = (e) => {
     modal.classList.remove("active");
   }
 };
-
-
-function updateCartUI() {
-    const count = basket.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById("cart-count").textContent = count;
-}
-
-syncCartUI();
-
-
-
-function syncCartUI() {
-    const totalQty = basket.reduce((sum, item) => sum + item.quantity, 0);
-
-    document.getElementById("cart-count").textContent = totalQty;
-
-    const checkoutBtn = document.getElementById("checkout-btn");
-
-    checkoutBtn.disabled = totalQty === 0;
-    checkoutBtn.style.opacity = totalQty === 0 ? "0.5" : "1";
-    checkoutBtn.style.pointerEvents = totalQty === 0 ? "none" : "auto";
-}
-
-
-
-
-
-function changeQty(index, amount) {
-  basket[index].quantity += amount;
-
-  if (basket[index].quantity <= 0) {
-    basket.splice(index, 1);
-  }
-
-  localStorage.setItem("basket", JSON.stringify(basket));
-
-  updateCartUI();
-  renderCart();
-}
-
-function removeItem(index) {
-  basket.splice(index, 1);
-
-  localStorage.setItem("basket", JSON.stringify(basket));
-
-  updateCartUI();
-  renderCart();
-}
 
 
 modal.addEventListener("click", (e) => {
@@ -361,194 +236,155 @@ imageViewer.addEventListener("click", () => {
 
 
 
+// =========================
+// SEARCH DROPDOWN
+// =========================
+
 const searchInput = document.getElementById("search-input");
 
-searchInput.addEventListener("focus", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+
+// Create dropdown
+
+const searchDropdown = document.createElement("div");
+
+searchDropdown.className = "search-dropdown";
+
+searchInput.parentElement.appendChild(searchDropdown);
+
+
+// Get all menu items
+
+function getMenuItems() {
+
+  return Array.from(document.querySelectorAll(".item-card")).map(card => {
+
+    const titleElement = card.querySelector("h3");
+
+    return {
+      element: card,
+      title: titleElement ? titleElement.textContent.trim() : ""
+    };
+
   });
-});
+
+}
+
+
+// Search
 
 searchInput.addEventListener("input", () => {
 
-  const searchTerm = searchInput.value.toLowerCase();
+  const searchTerm = searchInput.value.toLowerCase().trim();
 
-  document.querySelectorAll(".menu-section").forEach(section => {
+  searchDropdown.innerHTML = "";
 
-    const cards = section.querySelectorAll(".item-card");
-    let visibleCards = 0;
+  if (searchTerm === "") {
 
-    cards.forEach(card => {
+    searchDropdown.style.display = "none";
+searchInput.parentElement.classList.remove("search-open");
 
-      const title = card.querySelector("h3").textContent.toLowerCase();
-      const desc = card.querySelector("p").textContent.toLowerCase();
+    return;
 
-      if (
-        title.includes(searchTerm) ||
-        desc.includes(searchTerm)
-      ) {
-        card.style.display = "flex";
-        visibleCards++;
-      } else {
-        card.style.display = "none";
-      }
+  }
 
-    });
 
-    // Hide empty categories
-    if (visibleCards === 0) {
-      section.style.display = "none";
-    } else {
-      section.style.display = "block";
-    }
-    
+  const menuItems = getMenuItems();
 
+
+  // Only match the START of the item name
+
+  const matches = menuItems.filter(item =>
+    item.title.toLowerCase().startsWith(searchTerm)
+  );
+
+
+  if (matches.length === 0) {
+
+    searchDropdown.style.display = "none";
+searchInput.parentElement.classList.remove("search-open");
+
+    return;
+
+  }
+
+
+  matches.forEach(item => {
+
+    const result = document.createElement("div");
+
+    result.className = "search-result";
+
+    result.textContent = item.title;
+
+
+    result.addEventListener("click", () => {
+
+  // Close dropdown
+  searchDropdown.style.display = "none";
+  searchInput.parentElement.classList.remove("search-open");
+
+  // Clear search
+  searchInput.value = "";
+
+  // Calculate distance to the item
+  const itemPosition = item.element.getBoundingClientRect().top;
+
+  const distance = Math.abs(
+    itemPosition - (window.innerHeight / 2)
+  );
+
+  // Scroll to item
+  item.element.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
   });
 
-  
+  // Highlight item
+  item.element.style.outline = "3px solid #e4087f";
+  item.element.style.outlineOffset = "4px";
+
+  // Calculate wait time based on scroll distance
+  const scrollTime = Math.min(
+    Math.max(distance * 0.8, 400),
+    1500
+  );
+
+  // Open modal after scrolling
+  setTimeout(() => {
+
+    item.element.style.outline = "";
+    item.element.style.outlineOffset = "";
+
+    // Open the existing item modal
+    item.element.click();
+
+  }, scrollTime);
 
 });
 
 
-function updateCartUI() {
-  const count = basket.reduce((sum, item) => sum + item.quantity, 0);
-  document.getElementById("cart-count").textContent = count;
-  localStorage.setItem("basket", JSON.stringify(basket));
-}
+    searchDropdown.appendChild(result);
 
-function renderCart() {
-
-  cartItems.innerHTML = "";
-
-  if (basket.length === 0) {
-
-    cartItems.innerHTML =
-        "<p>Your basket is empty.</p>";
-
-    cartTotal.textContent = "0.00";
-
-    return;
-
-}
-
-  let total = 0;
-
-  basket.forEach((item, index) => {
-
-    const price = parseFloat(item.price.replace("£", ""));
-    total += price * item.quantity;
-
-    const div = document.createElement("div");
-    div.className = "cart-item";
-
-    div.innerHTML = `
-<div>
-
-<strong>${item.name}</strong><br>
-
-£${price.toFixed(2)}
-
-<div class="cart-qty">
-<button onclick="changeQty(${index}, -1)">−</button>
-
-<span>${item.quantity}</span>
-
-<button onclick="changeQty(${index}, 1)">+</button>
-</div>
-
-<textarea
-class="item-note"
-placeholder="Add a note (optional)..."
-oninput="updateNote(${index}, this.value)"
->${item.note || ""}</textarea>
-
-</div>
-
-<button onclick="removeItem(${index})">🗑️</button>
-`;
-
-    cartItems.appendChild(div);
   });
 
-  cartTotal.textContent = total.toFixed(2);
+searchDropdown.style.display = "block";
+searchInput.parentElement.classList.add("search-open");
+
+});
 
 
+// Hide dropdown when clicking elsewhere
 
-}
+document.addEventListener("click", (event) => {
 
+  if (
+    event.target !== searchInput &&
+    !searchDropdown.contains(event.target)
+  ) {
 
+    searchDropdown.style.display = "none";
+searchInput.parentElement.classList.remove("search-open");
 
-function changeQty(index, amount) {
-  basket[index].quantity += amount;
-
-  if (basket[index].quantity <= 0) {
-    basket.splice(index, 1);
   }
 
-  updateCartUI();
-  renderCart();
-}
-
-function removeItem(index) {
-  basket.splice(index, 1);
-  updateCartUI();
-  renderCart();
-}
-
-function updateNote(index, value) {
-  basket[index].note = value;
-  localStorage.setItem("basket", JSON.stringify(basket));
-}
-
-
-const cartIcon = document.getElementById("cart-nav");
-const cartDrawer = document.getElementById("cart-drawer");
-const cartOverlay = document.getElementById("cart-overlay");
-const cartClose = document.getElementById("cart-close");
-
-cartIcon.onclick = openCart;
-cartClose.onclick = closeCart;
-cartOverlay.onclick = closeCart;
-
-function openCart() {
-  cartDrawer.classList.add("active");
-  cartOverlay.classList.add("active");
-  renderCart();
-}
-
-function closeCart() {
-  cartDrawer.classList.remove("active");
-  cartOverlay.classList.remove("active");
-}
-
-document.getElementById("checkout-btn").onclick = () => {
-
-  let message = "Order:\n\n";
-  let total = 0;
-
-  basket.forEach(item => {
-
-    const price = parseFloat(item.price.replace("£", ""));
-    const subtotal = price * item.quantity;
-
-    total += subtotal;
-
-    message += `${item.name} x${item.quantity} - £${subtotal.toFixed(2)}\n`;
-
-    if (item.note) {
-      message += `Note: ${item.note}\n`;
-    }
-
-    message += "\n";
-  });
-
-  message += `Total: £${total.toFixed(2)}\n`;
-
-  const phone = "447882265112";
-
-  window.open(
-    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`,
-    "_blank"
-  );
-};
+});
