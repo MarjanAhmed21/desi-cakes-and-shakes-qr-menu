@@ -65,14 +65,14 @@ html {
 
 
 .category-scroll {
-  flex: 1;          /* Take remaining width */
+    flex: 1;
     display: flex;
+    justify-content: center;
     gap: 10px;
     overflow-x: auto;
     padding: 5px;
     scrollbar-width: thin;
     scrollbar-color: #e4087f #ffe3f1;
-  
 }
 
 .category-scroll a {
